@@ -1,0 +1,34 @@
+name: logging-demo
+
+services:
+  orders:
+    build: ./app
+    ports:
+      - "8080:8080"
+    labels:
+      logging: "alloy"
+
+  alloy:
+    image: grafana/alloy:v1.20.1
+    command: run /etc/alloy/config.alloy
+    volumes:
+      - ./config.alloy:/etc/alloy/config.alloy
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - loki
+
+  loki:
+    image: grafana/loki:3.7.8
+    command: -config.file=/etc/loki/local-config.yaml
+
+  grafana:
+    image: grafana/grafana:13.2.4
+    ports:
+      - "3000:3000"
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+    volumes:
+      - ./grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
+    depends_on:
+      - loki

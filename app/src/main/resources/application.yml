@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: orders
+
+logging:
+  level:
+    root: INFO
+    dev.huseyincodes.orders: INFO
+  structured:
+    format:
+      console: logstash
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,loggers

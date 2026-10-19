@@ -1,0 +1,7 @@
+# "quiet" profile: the app writes none of its own log lines and no stack traces (SPRING_PROFILES_ACTIVE=quiet)
+logging:
+  level:
+    dev.huseyincodes.orders: OFF
+  structured:
+    format:
+      console: ""
