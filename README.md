@@ -2,8 +2,8 @@
 
 A small Spring Boot order service that logs at every level, writes its logs as JSON, lets you change the level at runtime, and ships everything to Grafana Loki with Grafana Alloy. At the end you can find a failed payment, with its stack trace, in one Grafana query.
 
-Video: https://youtu.be/SvvEc8gaeMI
-Article: https://huseyinbabal.dev/posts/spring-boot-logging-grafana-loki/
+- Video: https://youtu.be/SvvEc8gaeMI
+- Article: https://huseyinbabal.dev/posts/spring-boot-logging-grafana-loki/
 
 | Part | Version |
 | --- | --- |
